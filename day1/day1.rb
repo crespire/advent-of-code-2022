@@ -1,4 +1,4 @@
-inventory = File.open('./day1_input.txt') { |file| file.readlines(chomp: true) }
+inventory = File.open("#{__dir__}/day1_input.txt") { |file| file.readlines(chomp: true) }
 
 elves = inventory.slice_when do |i, _|
   i.length.zero?
