@@ -150,6 +150,5 @@ fs = AFileSystem.new(commands)
 
 fs.pretty_print
 
-p fs.part1
-
-p fs.part2
+puts "Sum total of directories under 100,000 bytes: #{fs.part1}"
+puts "Smallest directory size to delete that will allow update to fit: #{fs.part2}"
