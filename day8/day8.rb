@@ -6,7 +6,6 @@ def tree_vis(map)
   transposed = map.transpose
   map.each_with_index do |line, i|
     line.each_with_index do |tree, j|
-      # puts "Checking #{tree} at #{i}, #{j}"
       if (i - 1).negative? || (i + 1 > map.length - 1)
         visible << tree
         next
@@ -19,24 +18,18 @@ def tree_vis(map)
 
       slice_left = line[0..j - 1]
       slice_right = line[j + 1..]
-      # puts "Slice left: #{slice_left}, Slice right: #{slice_right}"
-
       slice_up = transposed[j][0..i - 1]
       slice_down = transposed[j][i + 1..]
-      # puts "Slice up: #{slice_up}, slice down: #{slice_down}"
-      if slice_left.all? { |other| tree > other } || slice_right.all? { |other| tree > other }
-        # puts "Left/right triggered"
-        visible << tree 
-        next
-      end
 
-      if slice_up.all? { |other| tree > other } || slice_down.all? { |other| tree > other }
-        # puts "Up/down triggered"
+      if slice_left.all? { |other| tree > other } || slice_right.all? { |other| tree > other }
         visible << tree
         next
       end
 
-      # puts "Tree #{tree} not visible"
+      if slice_up.all? { |other| tree > other } || slice_down.all? { |other| tree > other }
+        visible << tree
+        next
+      end
     end
   end
   visible
