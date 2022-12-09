@@ -10,7 +10,7 @@ def tree_vis(map)
         visible << tree
         next
       end
-  
+ 
       if (j - 1).negative? || (j + 1 > line.length - 1)
         visible << tree
         next
